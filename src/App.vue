@@ -1,5 +1,17 @@
 <template>
-  <div>heelo</div>
+  <Layout>
+    <Articles />
+  </Layout>
 </template>
 
-<script></script>
+<script>
+import Layout from "./components/layout/index.vue";
+import Articles from "./components/articles/index.vue";
+
+export default {
+  components: {
+    Layout,
+    Articles,
+  },
+};
+</script>
