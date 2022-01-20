@@ -4,7 +4,22 @@ import Project from "./pages/project.vue";
 import Resume from "./pages/resume.vue";
 import Talk from "./pages/talk.vue";
 import Posts from "./pages/posts.vue";
-import Test from "../posts/notes/test.md";
+const camlize = (str: string) =>
+  str.replace(/-(\w)/g, (_, $1) => $1.toUpperCase());
+
+const notes = import.meta.globEager("../posts/notes/*.md");
+
+const finder = (part: Record<string, any>) => {
+  return Object.keys(part).map((mod) => {
+    const r = part[mod];
+    const name = camlize(r.meta[0].name);
+    return {
+      path: r.meta[0].name,
+      component: part[mod].default,
+      name,
+    };
+  });
+};
 
 const routes: RouteRecordRaw[] = [
   {
@@ -30,12 +45,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/notes",
     component: Posts,
-    children: [
-      {
-        path: "test",
-        component: Test,
-      },
-    ],
+    children: [...finder(notes)],
   },
 ];
 

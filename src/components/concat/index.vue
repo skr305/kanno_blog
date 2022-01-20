@@ -48,8 +48,10 @@ export default defineComponent({
   box-sizing: border-box;
   padding: var(--fect-gap-quarter);
   z-index: 1;
-  position: absolute;
-  bottom: 5rem;
+  margin-top: auto;
+  /* position: absolute; */
+  position: relative;
+  bottom: var(--fect-gap);
   left: 50%;
   transform: translateX(-50%);
 }

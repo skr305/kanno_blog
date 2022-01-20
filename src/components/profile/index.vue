@@ -16,30 +16,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import ProfileLinks from '../profile-links/index.vue'
-import { useLayoutContext } from '../layout/use-layout-context'
+import { defineComponent } from "vue";
+import ProfileLinks from "../profile-links/index.vue";
+import { useLayoutContext } from "../layout/use-layout-context";
 export default defineComponent({
   components: {
     ProfileLinks,
   },
   setup() {
-    const { context } = useLayoutContext()
+    const { context } = useLayoutContext();
     const userInfo = {
       avatar: context.avatar,
       author: context.author,
       introduce: context.introduce,
-    }
+    };
     return {
       userInfo,
-    }
+    };
   },
-})
+});
 </script>
 
 <style scoped>
 .profile {
-  padding: var(--fect-gap) 0;
+  padding: var(--fect-gap-half) 0;
 }
 
 .profile .user .summary {

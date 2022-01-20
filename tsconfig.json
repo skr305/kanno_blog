@@ -7,8 +7,9 @@
     "importHelpers": true,
     "esModuleInterop": true,
     "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "node",
-    "types": ["@fect-ui/vue/components"],
+    "types": ["vite/client", "@fect-ui/vue/components"],
     "lib": ["esnext", "dom", "dom.iterable"]
   },
   "include": ["src/**/*.vue", "src/**/*.ts", "src/**/*.d.ts", "src/global.d.ts"]
