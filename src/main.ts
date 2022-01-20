@@ -1,8 +1,9 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import { UIRegister } from "./plugins/ui";
-const instance = createApp(App);
+import { createApp } from 'vue'
+import App from './App.vue'
+import { UIRegister } from './plugins/ui'
+import router from './router'
+const instance = createApp(App)
 
-UIRegister(instance);
+UIRegister(instance)
 
-instance.mount("#app");
+instance.use(router).mount('#app')

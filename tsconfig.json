@@ -11,5 +11,5 @@
     "types": ["@fect-ui/vue/components"],
     "lib": ["esnext", "dom", "dom.iterable"]
   },
-  "include": ["src/**/*.vue", "src/**/*.ts", "src/**/*.d.ts"]
+  "include": ["src/**/*.vue", "src/**/*.ts", "src/**/*.d.ts", "src/global.d.ts"]
 }
