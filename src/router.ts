@@ -7,8 +7,6 @@ import Posts from "./pages/posts.vue";
 const camlize = (str: string) =>
   str.replace(/-(\w)/g, (_, $1) => $1.toUpperCase());
 
-const notes = import.meta.globEager("../posts/notes/*.md");
-
 const finder = (part: Record<string, any>) => {
   return Object.keys(part).map((mod) => {
     const r = part[mod];
@@ -20,6 +18,8 @@ const finder = (part: Record<string, any>) => {
     };
   });
 };
+
+export const notes = finder(import.meta.globEager("../posts/notes/*.md"));
 
 const routes: RouteRecordRaw[] = [
   {
@@ -45,7 +45,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/notes",
     component: Posts,
-    children: [...finder(notes)],
+    children: [...notes],
   },
 ];
 
