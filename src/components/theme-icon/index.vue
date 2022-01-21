@@ -1,31 +1,31 @@
 <template>
   <div class="theme-icon" title="change theme" role="button">
-    <Sun size="18" @click="clickHandler" v-show="theme === 'light-theme'" />
-    <Moon size="18" @click="clickHandler" v-show="theme === 'dark-theme'" />
+    <Sun size="20" @click="clickHandler" v-show="theme === 'light-theme'" />
+    <Moon size="20" @click="clickHandler" v-show="theme === 'dark-theme'" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { Sun, Moon } from "@fect-ui/vue-icons";
+import { defineComponent } from 'vue'
+import { Sun, Moon } from '@fect-ui/vue-icons'
 export default defineComponent({
-  name: "ThemeIcon",
+  name: 'ThemeIcon',
   components: {
     Sun,
-    Moon,
+    Moon
   },
   props: {
-    theme: String,
+    theme: String
   },
-  emits: ["click"],
+  emits: ['click'],
   setup(props, { emit }) {
-    const clickHandler = (e: MouseEvent) => emit("click", e);
+    const clickHandler = (e: MouseEvent) => emit('click', e)
 
     return {
-      clickHandler,
-    };
-  },
-});
+      clickHandler
+    }
+  }
+})
 </script>
 
 <style scoped>

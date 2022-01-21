@@ -18,11 +18,14 @@ meta:
 
 ### 提交规范
 
-- 现在`github`上的流行项目基本遵循**angular**团队的提交规范<fe-link herf="https://github.com/conventional-changelog/commitlint/blob/master/%40commitlint/config-conventional/README.md" color icon target="_blank">文档地址</fe-link>
-  一个富有语义化的提交记录方便代码的管理以及方便后续的人参与加入,试想一下一个不友好的提交记录对代码的可维护性的破坏是不可逆的。
-- 提交功能的时候,一定要拉取源仓库的代码并且在你本地新建分支推送到你`fork`出来的派生仓库,切勿在本地的`master/main`主分支进行功能的编写,如果项目要求有代码测试确保在本地测试完毕在 github 上发起`pr`
-- 一个健壮的项目的提交记录应该是`linear historical`,以我个人的经验给出的结论是多在本地`rebase`,不要再主干分支操作`rebase`变基。拉取代码的时候应该`git fetch update/stream` 然后 采用`git rebase -i update/stream/xxx`的方式进行合并
+- 现在`github`上的流行项目基本遵循**angular**团队的提交规范<fe-link herf="https://github.com/conventional-changelog/commitlint/blob/master/%40commitlint/config-conventional/README.md" color icon target="_blank">文档地址</fe-link>一个富有语义化的提交记录方便代码的管理以及方便后续的人参与加入,试想一下一个不友好的提交记录对代码的可维护性的破坏是不可逆的。
+
+- 提交功能的时候,一定要拉取源仓库的代码并且在你本地新建分支推送到你`fork`出来的派生仓库,切勿在本地的`master/main`主分支进行功能的编写,如果项目要求有代码测试确保在本地测试完毕在 github 上发起`pr`。
+
+- 一个健壮的项目的提交记录应该是`linear historical`,以我个人的经验给出的结论是多在本地`rebase`,不要再主干分支操作`rebase`变基。拉取代码的时候应该`git fetch update/stream` 然后 采用`git rebase -i update/stream/xxx`的方式进行合并。
+
 - 一个参与开源项目的好习惯就是采用`gpg`密钥,这样可以确保代码的提交记录为可信的。
+
 - `pr`的时候应该尽可能的描述你所作的功能以及为什么这么做,这样可以节省`code Reviewer`的时间,同时节省你自己的时间达到正反馈。
 
 ### 重心放在`package.json`
