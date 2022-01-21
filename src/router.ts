@@ -1,57 +1,53 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Notes from "./pages/notes.vue";
-import Project from "./pages/project.vue";
-import Resume from "./pages/resume.vue";
-import Talk from "./pages/talk.vue";
-import Posts from "./pages/posts.vue";
-const camlize = (str: string) =>
-  str.replace(/-(\w)/g, (_, $1) => $1.toUpperCase());
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import Notes from './pages/notes.vue'
+import Project from './pages/project.vue'
+import Resume from './pages/resume.vue'
+import Posts from './pages/posts.vue'
+const camlize = (str: string) => str.replace(/-(\w)/g, (_, $1) => $1.toUpperCase())
 
 const finder = (part: Record<string, any>) => {
   return Object.keys(part).map((mod) => {
-    const r = part[mod];
-    const name = camlize(r.meta[0].name);
+    const r = part[mod]
+    const name = camlize(r.meta[0].name)
     return {
       path: r.meta[0].name,
       component: part[mod].default,
       name,
-    };
-  });
-};
+      meta: {
+        title: r.title
+      }
+    }
+  })
+}
 
-export const notes = finder(import.meta.globEager("../posts/notes/*.md"));
+export const notes = finder(import.meta.globEager('../posts/notes/*.md'))
 
 const routes: RouteRecordRaw[] = [
   {
-    path: "/",
-    name: "note",
-    component: Notes,
+    path: '/',
+    name: 'note',
+    component: Notes
   },
   {
-    path: "/project",
-    name: "project",
-    component: Project,
+    path: '/project',
+    name: 'project',
+    component: Project
   },
   {
-    path: "/resume",
-    name: "resume",
-    component: Resume,
+    path: '/resume',
+    name: 'resume',
+    component: Resume
   },
   {
-    path: "/talk",
-    name: "talk",
-    component: Talk,
-  },
-  {
-    path: "/notes",
+    path: '/notes',
     component: Posts,
-    children: [...notes],
-  },
-];
+    children: [...notes]
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
-});
+  routes
+})
 
-export default router;
+export default router
