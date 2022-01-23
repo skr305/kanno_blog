@@ -17,7 +17,7 @@
         <fe-link class="link__box" :href="finder(link, 'url')">
           <fe-card shadow hoverable>
             <div class="image">
-              <fe-image :src="finder(link, 'src')" skeleton width="100%" height="150px" />
+              <fe-img :src="finder(link, 'src')" skeleton width="100%" height="150px" />
             </div>
             <div class="summary">
               <h3>{{ link }}</h3>
