@@ -1,17 +1,19 @@
 import { createApp } from './main'
 
 import { renderToString } from '@vue/server-renderer'
+import { renderHeadToString } from '@vueuse/head'
 
-import path, { basename } from 'path'
+import { basename } from 'path'
 
 export const render = async (url: string, manifest) => {
-  const { router, app } = createApp()
+  const { router, app, head } = createApp()
   router.push(url)
   await router.isReady()
   const ctx = {} as any
   const html = await renderToString(app, ctx)
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
-  return [html, preloadLinks]
+  const { headTags, htmlAttrs, bodyAttrs } = renderHeadToString(head)
+  return [html, preloadLinks, headTags, htmlAttrs, bodyAttrs]
 }
 
 function renderPreloadLinks(modules, manifest) {

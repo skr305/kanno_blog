@@ -8,7 +8,7 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/]
     }),
     Markdown({
-      // headEnabled: true,
+      headEnabled: true
     })
   ]
 })

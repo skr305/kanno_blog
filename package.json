@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "server": "ts-node scripts/server.ts"
+    "dev": "ts-node scripts/server.ts",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.ts --outDir dist/server",
+    "serve": "cross-env NODE_ENV=production ts-node scripts/server.ts"
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,7 @@
     "@vitejs/plugin-vue": "^2.0.1",
     "@vue/server-renderer": "^3.2.29",
     "@vueuse/head": "^0.7.5",
+    "cross-env": "^7.0.3",
     "koa": "^2.13.4",
     "koa-compress": "^5.1.0",
     "koa-connect": "^2.1.0",

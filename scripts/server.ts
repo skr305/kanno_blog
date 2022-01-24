@@ -9,7 +9,7 @@ const cwd = process.cwd()
 const createServer = async (root = cwd, isProd = process.env.NODE_ENV === 'production') => {
   const resolve = (p) => path.resolve(cwd, p)
   const indexProd = isProd ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8') : ''
-  const manifest = isProd ? require('./dist/client/ssr-manifest.json') : {}
+  const manifest = isProd ? require('../dist/client/ssr-manifest.json') : {}
 
   const app = new Koa()
   const router = new Router()
@@ -49,12 +49,15 @@ const createServer = async (root = cwd, isProd = process.env.NODE_ENV === 'produ
         template = indexProd
         render = require('../dist/server/entry-server.js').render
       }
-      const [appHtml, preloadLinks] = await render(url, manifest)
-      const html = template.replace(`<!--preload-links-->`, preloadLinks).replace(`<!--app-html-->`, appHtml)
+      const [appHtml, preloadLinks, headTags, htmlAttrs, bodyAttrs] = await render(url, manifest)
+      const html = template
+        .replace('<!--document-title-->', headTags)
+        .replace(`<!--preload-links-->`, preloadLinks)
+        .replace(`<!--app-html-->`, appHtml)
       await next()
-      ctx.state = 200
       ctx.set({ 'Content-Type': 'text/html' })
       ctx.body = html
+      ctx.state = 200
     } catch (error) {
       vite && vite.ssrFixStacktrace(error)
       console.log(error.stack)
