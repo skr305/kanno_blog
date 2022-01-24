@@ -1,7 +1,7 @@
 <template>
   <div class="theme-icon" title="change theme" role="button">
-    <Sun size="20" @click="clickHandler" v-show="theme === 'light-theme'" />
-    <Moon size="20" @click="clickHandler" v-show="theme === 'dark-theme'" />
+    <Sun size="20" @click="clickHandler" v-if="theme === 'light-theme'" />
+    <Moon size="20" @click="clickHandler" v-else-if="theme === 'dark-theme'" />
   </div>
 </template>
 

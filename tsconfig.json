@@ -9,6 +9,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
+    "jsx": "preserve",
     "types": ["vite/client", "@fect-ui/vue/components"],
     "lib": ["esnext", "dom", "dom.iterable"]
   },

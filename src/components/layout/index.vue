@@ -36,6 +36,13 @@ export default defineComponent({
 })
 </script>
 
+<style lang="css">
+.layout {
+  --font-sans: 'LXGW WenKai', sans-serif;
+  font-family: var(--font-sans);
+}
+</style>
+
 <style lang="css" scoped>
 .layout {
   width: 100vw;

@@ -13,9 +13,3 @@ export default {
   }
 }
 </script>
-
-<style>
-:root {
-  --font-sans: 'LXGW WenKai', sans-serif !important;
-}
-</style>
