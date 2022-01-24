@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter as _createRouter, createWebHistory, createMemoryHistory, RouteRecordRaw } from 'vue-router'
 import Notes from './pages/notes.vue'
 import Project from './pages/project.vue'
 import Resume from './pages/resume.vue'
@@ -45,9 +45,8 @@ const routes: RouteRecordRaw[] = [
   }
 ]
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
-
-export default router
+export const createRouter = () =>
+  _createRouter({
+    history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
+    routes
+  })

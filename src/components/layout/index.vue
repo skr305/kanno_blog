@@ -13,27 +13,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { useTheme } from "@fect-ui/vue";
-import { createLayoutContext } from "./use-layout-context";
-import ThemeIcon from "../theme-icon/index.vue";
-import Concat from "../concat/index.vue";
-import Profile from "../profile/index.vue";
-import BLOGCONFIG from "../../../blog.config";
+import { defineComponent } from 'vue'
+import { useTheme } from '@fect-ui/vue'
+import { createLayoutContext } from './use-layout-context'
+import ThemeIcon from '../theme-icon/index.vue'
+import Concat from '../concat/index.vue'
+import Profile from '../profile/index.vue'
+import BLOGCONFIG from '../../../blog.config'
 export default defineComponent({
-  name: "Layout",
+  name: 'Layout',
   components: {
     ThemeIcon,
     Profile,
-    Concat,
+    Concat
   },
   setup() {
-    const { theme, themeChange } = useTheme();
-    const { provider } = createLayoutContext();
-    provider(BLOGCONFIG);
-    return { theme, themeChange };
-  },
-});
+    const { theme, themeChange } = useTheme()
+    const { provider } = createLayoutContext()
+    provider(BLOGCONFIG)
+    return { theme, themeChange }
+  }
+})
 </script>
 
 <style lang="css" scoped>

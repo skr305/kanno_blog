@@ -1,10 +1,12 @@
-import { createApp } from "vue";
-import { createHead } from "@vueuse/head";
-import App from "./App.vue";
-import { UIRegister } from "./plugins/ui";
-import router from "./router";
-const instance = createApp(App);
-const head = createHead();
-UIRegister(instance);
+import App from './App.vue'
+import { createSSRApp } from 'vue'
+import { createRouter } from './router'
+import { UIRegister } from './plugins/ui'
 
-instance.use(head).use(router).mount("#app");
+export const createApp = () => {
+  const app = createSSRApp(App)
+  const router = createRouter()
+  app.use(router)
+  UIRegister(app)
+  return { app, router }
+}

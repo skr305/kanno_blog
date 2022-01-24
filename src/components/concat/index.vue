@@ -2,43 +2,33 @@
   <div class="concat">
     <fe-grid-group :gap="0.5">
       <fe-grid>
-        <fe-link class="link" aria-label="bio" taget="_blank" href="/">
-          Blog
-        </fe-link>
+        <fe-link class="link" aria-label="bio" taget="_blank" href="/"> Blog </fe-link>
       </fe-grid>
       <fe-grid>
-        <fe-link class="link" :href="concatInfo.email" aria-label="email"
-          >Email</fe-link
-        >
+        <fe-link class="link" :href="concatInfo.email" aria-label="email">Email</fe-link>
       </fe-grid>
       <fe-grid>
-        <fe-link
-          class="link"
-          :href="concatInfo.github"
-          target="_blank"
-          aria-label="github"
-        >
-          Github
-        </fe-link>
+        <fe-link class="link" :href="concatInfo.github" target="_blank" aria-label="github"> Github </fe-link>
       </fe-grid>
     </fe-grid-group>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { useLayoutContext } from "../layout/use-layout-context";
+import { defineComponent, inject } from 'vue'
+import { LAYOUT_KEY, useLayoutContext } from '../layout/use-layout-context'
 export default defineComponent({
-  name: "Concat",
+  name: 'Concat',
   setup() {
-    const { context } = useLayoutContext();
+    // useLayoutContext()
+    const context = inject(LAYOUT_KEY)
     const concatInfo = {
       email: context.email,
-      github: context.github,
-    };
-    return { concatInfo };
-  },
-});
+      github: context.github
+    }
+    return { concatInfo }
+  }
+})
 </script>
 
 <style scoped>
