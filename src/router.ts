@@ -3,6 +3,7 @@ import Notes from './pages/notes.vue'
 import Project from './pages/project.vue'
 import Resume from './pages/resume.vue'
 import Posts from './pages/posts.vue'
+import NotFound from './pages/not-found.vue'
 const camlize = (str: string) => str.replace(/-(\w)/g, (_, $1) => $1.toUpperCase())
 
 const finder = (part: Record<string, any>) => {
@@ -50,3 +51,18 @@ export const createRouter = () =>
     history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
     routes
   })
+
+export const getRoutes = () =>
+  routes
+    .map((item) => {
+      let route = []
+      if (item.children) {
+        item.children.forEach((_) => {
+          route.push(`${item.path}/${_.path}`)
+        })
+      }
+      route.push(item.path)
+      return route
+    })
+    .flat()
+    .slice(0, -1)

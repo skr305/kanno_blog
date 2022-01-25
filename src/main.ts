@@ -1,7 +1,7 @@
 import App from './App.vue'
 import { createSSRApp } from 'vue'
 import { createHead } from '@vueuse/head'
-import { createRouter } from './router'
+import { createRouter, getRoutes } from './router'
 import { UIRegister } from './plugins/ui'
 
 export const createApp = () => {
@@ -10,5 +10,5 @@ export const createApp = () => {
   const router = createRouter()
   app.use(router).use(head)
   UIRegister(app)
-  return { app, router, head }
+  return { app, router, head, routes: getRoutes() }
 }

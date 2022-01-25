@@ -1,6 +1,6 @@
 <template>
   <div class="profile-links">
-    <fe-link :to="item.route" v-for="item in links" :key="item.tip">{{ item.tip }}</fe-link>
+    <fe-link :to="{ name: item.route }" v-for="item in links" :key="item.tip">{{ item.tip }}</fe-link>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default defineComponent({
   setup() {
     const links = [
       {
-        route: '/',
+        route: 'note',
         tip: 'Notes'
       },
       {
@@ -23,6 +23,7 @@ export default defineComponent({
         tip: 'Resume'
       }
     ]
+
     return { links }
   }
 })

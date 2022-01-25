@@ -49,15 +49,20 @@ const createServer = async (root = cwd, isProd = process.env.NODE_ENV === 'produ
         template = indexProd
         render = require('../dist/server/entry-server.js').render
       }
-      const [appHtml, preloadLinks, headTags, htmlAttrs, bodyAttrs] = await render(url, manifest)
+      const [appHtml, preloadLinks, headTags, hasMatch] = await render(url, manifest)
       const html = template
         .replace('<!--document-title-->', headTags)
         .replace(`<!--preload-links-->`, preloadLinks)
         .replace(`<!--app-html-->`, appHtml)
       await next()
       ctx.set({ 'Content-Type': 'text/html' })
-      ctx.body = html
-      ctx.state = 200
+      if (hasMatch) {
+        ctx.state = 200
+        ctx.body = html
+      } else {
+        ctx.state = 404
+        ctx.body = '404'
+      }
     } catch (error) {
       vite && vite.ssrFixStacktrace(error)
       console.log(error.stack)

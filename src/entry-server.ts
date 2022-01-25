@@ -6,14 +6,15 @@ import { renderHeadToString } from '@vueuse/head'
 import { basename } from 'path'
 
 export const render = async (url: string, manifest) => {
-  const { router, app, head } = createApp()
+  const { router, app, head, routes } = createApp()
+  const hasMatch = routes.includes(url)
   router.push(url)
   await router.isReady()
   const ctx = {} as any
   const html = await renderToString(app, ctx)
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
-  const { headTags, htmlAttrs, bodyAttrs } = renderHeadToString(head)
-  return [html, preloadLinks, headTags, htmlAttrs, bodyAttrs]
+  const { headTags } = renderHeadToString(head)
+  return [html, preloadLinks, headTags, hasMatch]
 }
 
 function renderPreloadLinks(modules, manifest) {
