@@ -36,4 +36,5 @@ jobs:
           key: ${{ secrets.ALIYUN_SSH_TOKEN }}
           script: |
             cd /opt/kanno-blog
+            yarn install
             pm2 reload pm2.config.json
