@@ -37,4 +37,4 @@ jobs:
           script: |
             cd /opt/kanno-blog
             yarn install
-            pm2 reload pm2.config.json
+            pm2 reload pm2.config.js
