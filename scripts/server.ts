@@ -71,7 +71,7 @@ const createServer = async (root = cwd, isProd = process.env.NODE_ENV === 'produ
 }
 
 createServer().then(({ app }) =>
-  app.listen(3000, () => {
-    console.log('http://localhost:3000')
+  app.listen(8777, () => {
+    console.log('http://localhost:8777')
   })
 )
