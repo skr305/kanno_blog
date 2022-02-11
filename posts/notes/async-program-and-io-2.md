@@ -30,4 +30,3 @@ fs.readFile('./1.txt', 'utf8', (err, data) => {
 <fe-grid justify="center" style="display:flex;">
 <fe-img src="https://user-images.githubusercontent.com/52351095/153580727-a9513dfa-ac6e-42db-88c7-d9608e9aca17.png" skeleton width="100%" height="400px"></fe-img>
 </fe-grid>
-

@@ -3,11 +3,11 @@
     <h2>Recent</h2>
     <ul class="notes__container">
       <li v-for="note in noteList" :key="note.name">
-        <h3>
+        <h5>
           <fe-link underline :to="{ name: note.name }">
             {{ note.meta.title }}
           </fe-link>
-        </h3>
+        </h5>
       </li>
     </ul>
   </div>
@@ -48,13 +48,10 @@ ul {
   margin: 0;
   padding: 0;
 }
-ul li {
-  text-decoration: none;
-  list-style: none;
+ul li::before {
+  content: none;
 }
-
-ul li > h3 {
-  font-size: 1rem;
-  text-transform: uppercase;
+ul li:first-child {
+  margin-top: 1.4rem;
 }
 </style>

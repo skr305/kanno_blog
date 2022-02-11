@@ -43,8 +43,9 @@
     "vue-tsc": "^0.30.6"
   },
   "dependencies": {
-    "@fect-ui/vue": "^1.2.0",
+    "@fect-ui/vue": "^1.3.0-rc.0",
     "@fect-ui/vue-icons": "^2.0.0",
+    "prismjs": "^1.26.0",
     "vue": "^3.2.27",
     "vue-router": "^4.0.12"
   }

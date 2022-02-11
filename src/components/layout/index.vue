@@ -1,25 +1,25 @@
 <template>
   <div class="layout">
     <div class="layout__container">
-      <fe-spacer />
+      <div style="height: 15.25pt"></div>
       <theme-icon :theme="theme" @click="themeChange" />
       <profile />
-      <fe-spacer />
       <slot />
-      <fe-spacer :y="5" />
+      <div style="height: 80px"></div>
       <concat />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted } from 'vue'
 import { useTheme } from '@fect-ui/vue'
 import { createLayoutContext } from './use-layout-context'
 import ThemeIcon from '../theme-icon/index.vue'
 import Concat from '../concat/index.vue'
 import Profile from '../profile/index.vue'
 import BLOGCONFIG from '../../../blog.config'
+
 export default defineComponent({
   name: 'Layout',
   components: {
@@ -31,6 +31,7 @@ export default defineComponent({
     const { theme, themeChange } = useTheme()
     const { provider } = createLayoutContext()
     provider(BLOGCONFIG)
+
     return { theme, themeChange }
   }
 })

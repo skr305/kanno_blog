@@ -2,7 +2,7 @@
   <div class="resume">
     <AboutMe />
     <fe-dot type="success">以下是我的友站链接,排名不分先后</fe-dot>
-    <fe-spacer :y="1" />
+    <p></p>
     <fe-grid-group class="content" :gap="1">
       <fe-grid
         class="link__container"
@@ -21,7 +21,7 @@
               <fe-img :src="finder(link, 'src')" skeleton width="100%" height="150px" />
             </div>
             <div class="summary">
-              <h3>{{ link }}</h3>
+              <h5>{{ link }}</h5>
               <span>{{ finder(link, 'description') }}</span>
             </div>
           </fe-card>
@@ -51,13 +51,8 @@ export default defineComponent({
 </script>
 
 <style>
-.link__container {
-  height: 200px;
-}
-
 .link__box {
-  display: initial;
-  width: 100%;
+  width: 100% !important;
   height: inherit;
 }
 
@@ -70,12 +65,6 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--fect-gap-half);
-}
-
-.summary h3 {
-  font-size: 1.175rem;
-  font-weight: 600;
   margin-bottom: var(--fect-gap-half);
 }
 
