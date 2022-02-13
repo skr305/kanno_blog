@@ -2,7 +2,7 @@
   <div class="resume">
     <AboutMe />
     <fe-dot type="success">以下是我的友站链接,排名不分先后</fe-dot>
-    <p></p>
+    <fe-spacer />
     <fe-grid-group class="content" :gap="1">
       <fe-grid
         class="link__container"

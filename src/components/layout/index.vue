@@ -1,11 +1,11 @@
 <template>
   <div class="layout">
     <div class="layout__container">
-      <div style="height: 15.25pt"></div>
+      <fe-spacer />
       <theme-icon :theme="theme" @click="themeChange" />
       <profile />
       <slot />
-      <div style="height: 80px"></div>
+      <fe-spacer :y="5" />
       <concat />
     </div>
   </div>
