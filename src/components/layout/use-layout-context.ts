@@ -1,7 +1,7 @@
-import { createProvider, useProvider } from '@fect-ui/vue-hooks'
+import { provide, inject } from 'vue'
 import { LayoutProvide } from './interface'
 export const LAYOUT_KEY = Symbol('layoutKey')
 
-export const createLayoutContext = () => createProvider(LAYOUT_KEY)
+export const createLayoutContext = (val) => provide(LAYOUT_KEY, val)
 
-export const useLayoutContext = () => useProvider<LayoutProvide>(LAYOUT_KEY)
+export const useLayoutContext = () => inject<LayoutProvide>(LAYOUT_KEY)

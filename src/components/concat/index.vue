@@ -15,13 +15,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from 'vue'
+import { defineComponent } from 'vue'
 import { LAYOUT_KEY, useLayoutContext } from '../layout/use-layout-context'
 export default defineComponent({
   name: 'Concat',
   setup() {
-    // useLayoutContext()
-    const context = inject(LAYOUT_KEY)
+    const context = useLayoutContext()
     const concatInfo = {
       email: context.email,
       github: context.github

@@ -29,8 +29,7 @@ export default defineComponent({
   },
   setup() {
     const { theme, themeChange } = useTheme()
-    const { provider } = createLayoutContext()
-    provider(BLOGCONFIG)
+    createLayoutContext(BLOGCONFIG)
 
     return { theme, themeChange }
   }

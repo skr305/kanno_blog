@@ -3,5 +3,10 @@
     "src": "https://user-images.githubusercontent.com/52351095/118687359-7e809480-b837-11eb-8083-b0504ec79652.png",
     "url": "https://github.com/fect-org/fect",
     "description": "Minimalist Vue UI components"
+  },
+  "vite-compression-plugin": {
+    "src": "https://user-images.githubusercontent.com/52351095/153858756-9f28329d-7d54-415e-bcbf-271f8621ca03.png",
+    "url": "https://github.com/XeryYue/vite-compression-plugin",
+    "description": "compress souce file by stream, use it in vite."
   }
 }
