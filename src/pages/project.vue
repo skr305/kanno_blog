@@ -34,7 +34,7 @@
 import { defineComponent } from 'vue'
 import links from '../../open-source.json'
 import OpenSource from '../../posts/open-source.md'
-import { resolver, serialize } from '../utils/resolver'
+import { resolver, serialize } from '../utils'
 export default defineComponent({
   name: 'Project',
   components: {

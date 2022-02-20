@@ -3,6 +3,7 @@ title: NodeJS异步编程与IO-1
 meta:
   - name: asyn-program-and-io-1
     content: asyn-program-and-io-1
+    date: '2022-02-09T07:47:53.000Z'
 ---
 
 `Web`的发展日新月异,单机时代下已经难以在满足我们的开发需要,跨网络的架构下,并发编程已经成为了一个标准,具体到用户体验资源分发。

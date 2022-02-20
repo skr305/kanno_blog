@@ -15,7 +15,8 @@ const finder = (part: Record<string, any>) => {
       component: part[mod].default,
       name,
       meta: {
-        title: r.title
+        title: r.title,
+        date: r.meta[0].date
       }
     }
   })

@@ -8,25 +8,28 @@
             {{ note.meta.title }}
           </fe-link>
         </h5>
+        <span class="date-stamp">{{ dateTransfer(note.meta.date) }}</span>
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { useState } from '@fect-ui/vue-hooks'
+import { computed, defineComponent } from 'vue'
 import { notes } from '../router'
-
-type Note = typeof notes[number]
+import { dateString } from '../utils'
 
 export default defineComponent({
   name: 'Notes',
 
   setup() {
-    const [noteList, setNoteList] = useState<Note[]>(notes)
+    const noteList = computed(() => notes.sort((pre, next) => +new Date(next.meta.date) - +new Date(pre.meta.date)))
+
+    const dateTransfer = (stamp: string) => dateString(stamp)
+
     return {
-      noteList
+      noteList,
+      dateTransfer
     }
   }
 })
@@ -53,5 +56,12 @@ ul li::before {
 }
 ul li:first-child {
   margin-top: 1.4rem;
+}
+ul li .date-stamp {
+  font-size: 0.75rem;
+  display: block;
+  margin-top: -0.5rem;
+  line-height: 1.5rem;
+  color: var(--accents-3);
 }
 </style>

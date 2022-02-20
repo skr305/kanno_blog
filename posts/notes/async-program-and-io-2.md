@@ -3,6 +3,7 @@ title: NodeJS异步编程与IO-2
 meta:
   - name: asyn-program-and-io-2
     content: asyn-program-and-io-2
+    date: '2022-02-12T09:22:04.000Z'
 ---
 
 接上文,在<fe-link to="/notes/asyn-program-and-io-1">`NodeJS异步编程与IO-1`</fe-link>中,我们聊到了异步带来的好处。包括用户体验、资源分配、基础的线程池认知,我们也明白了`NodeJs`不单单只是一门

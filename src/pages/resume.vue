@@ -35,7 +35,7 @@
 import { defineComponent } from 'vue'
 import AboutMe from '../../posts/about.md'
 import links from '../../link.json'
-import { resolver, serialize } from '../utils/resolver'
+import { resolver, serialize } from '../utils'
 export default defineComponent({
   name: 'Resume',
   components: {

@@ -3,6 +3,7 @@ title: 如何参与一个开源项目
 meta:
   - name: open-source-project
     content: best-practices-for-open-source-project
+    date: '2022-01-20T15:37:27.000Z'
 ---
 
 参与开源项目是一种提升自己的手段,那么作为新手该如何参与项目并从中学习到思想呢?本文将从作者我的角度去阐述我参与开源的一些经验,通过
