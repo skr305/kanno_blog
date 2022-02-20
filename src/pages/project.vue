@@ -2,7 +2,7 @@
   <div class="project">
     <open-source />
     <fe-spacer />
-    <fe-grid-group class="content" :gap="1">
+    <fe-grid-group class="content" :gap="2">
       <fe-grid
         class="link__container"
         v-for="link in links"

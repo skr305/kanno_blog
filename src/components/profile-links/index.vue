@@ -1,11 +1,14 @@
 <template>
   <div class="profile-links">
-    <fe-link :to="{ name: item.route }" v-for="item in links" :key="item.tip">{{ item.tip }}</fe-link>
+    <fe-tabs v-model:active="actived" hide-border hide-divider @click="tabClickHandler">
+      <fe-tab class="profile-tab" v-for="item in links" :key="item.tip" :title="item.tip" :value="item.route" />
+    </fe-tabs>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
 export default defineComponent({
   name: 'ProfileLinks',
   setup() {
@@ -23,8 +26,14 @@ export default defineComponent({
         tip: 'Resume'
       }
     ]
+    const actived = ref('note')
+    const route = useRouter()
 
-    return { links }
+    const tabClickHandler = (e) => {
+      route.push({ name: e.target.checkValue })
+    }
+
+    return { links, tabClickHandler, actived }
   }
 })
 </script>
@@ -42,5 +51,10 @@ export default defineComponent({
 
 .profile-links a:last-of-type {
   margin-right: 0;
+}
+
+.profile-links .profile-tab {
+  height: 0;
+  padding-top: 0;
 }
 </style>

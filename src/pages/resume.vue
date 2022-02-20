@@ -3,7 +3,7 @@
     <AboutMe />
     <fe-dot type="success">以下是我的友站链接,排名不分先后</fe-dot>
     <fe-spacer />
-    <fe-grid-group class="content" :gap="1">
+    <fe-grid-group class="content" :gap="2">
       <fe-grid
         class="link__container"
         v-for="link in links"
