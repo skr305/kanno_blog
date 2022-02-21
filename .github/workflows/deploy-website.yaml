@@ -34,6 +34,7 @@ jobs:
           script: |
             cd /opt
             tar -zxvf kanno_blog-v1.0.0.tgz -C
+            rm -f kanno_blog-v1.0.0.tgz
             unalias cp
             cp -rf package/. kanno-blog/ 
             rm -rf package 
