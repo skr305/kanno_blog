@@ -33,7 +33,7 @@ jobs:
           key: ${{ secrets.ALIYUN_SSH_TOKEN }}
           script: |
             cd /opt
-            tar -zxvf kanno_blog-v1.0.0.tgz -C
+            tar zxvf kanno_blog-v1.0.0.tgz
             rm -f kanno_blog-v1.0.0.tgz
             unalias cp
             cp -rf package/. kanno-blog/ 
