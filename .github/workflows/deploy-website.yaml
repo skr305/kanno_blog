@@ -12,29 +12,32 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-      - name: Install Dependencies
-        run: yarn
+      - name: Pack Blog Project
+        run: yarn pack
 
-      - name: Build source
-        run: yarn build
-
-      - name: Deploy to Ali
+      - name: Trans zip
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.ALIYUN_SSH_TOKEN }}
           ARGS: '-avz --delete'
-          SOURCE: './dist'
+          SOURCE: './kanno_blog-v1.0.0.tgz'
           REMOTE_HOST: ${{ secrets.ALI_HOST }}
           REMOTE_USER: 'root'
-          TARGET: '/opt/kanno-blog'
+          TARGET: '/opt'
 
-      - name: Reload pm2
+      - name: Deploy to Ali
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.ALI_HOST }}
           username: 'root'
           key: ${{ secrets.ALIYUN_SSH_TOKEN }}
           script: |
-            cd /opt/kanno-blog
+            cd /opt
+            tar -zxvf kanno_blog-v1.0.0.tgz -C
+            cp -rf package/. kanno-blog/ 
+            rm -rf package 
+            cd kanno-blog
+            rm -rf .github/
             yarn install
+            yarn build
             pm2 reload pm2.config.js
