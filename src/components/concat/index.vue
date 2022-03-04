@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { LAYOUT_KEY, useLayoutContext } from '../layout/use-layout-context'
+import { useLayoutContext } from '../layout/use-layout-context'
 export default defineComponent({
   name: 'Concat',
   setup() {
