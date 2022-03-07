@@ -73,10 +73,10 @@
   resolved "https://registry.yarnpkg.com/@fect-ui/vue-icons/-/vue-icons-2.0.0.tgz#e3786f2c27bf653f351c9696df4467a29e2b85c3"
   integrity sha512-/ZhSicpoZIk/Ib9nZ3iTCUd8sR0JgAKB2PIZQexcwBko7XMxNOfpAbm1SPoZOB8WicaNyAr80sInzJb7+C8QYg==
 
-"@fect-ui/vue@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.npmjs.org/@fect-ui/vue/-/vue-1.3.4.tgz#df04a4d7d9e9609f69e2c88aacf5f1c1fbab2ada"
-  integrity sha512-VXQBbpgPG8RCecEB0NGLiq/Uskc67AN10MhH7sEfj8nO+pBacFrOPdxydx/DGxxWcDRdeb/pwRqC6sNfvwZFxw==
+"@fect-ui/vue@^1.3.7":
+  version "1.3.7"
+  resolved "https://registry.npmjs.org/@fect-ui/vue/-/vue-1.3.7.tgz#0e085e824b333502d6cf94cbf34886da6f112060"
+  integrity sha512-eUgkevAn/3EXV9BKUa6jnY4CBix4LtJCRYkhRGI5QAxI3pEK2s2a4LYoavDGQOyxXnJCOvYpRKNLI92Z3OOmHA==
   dependencies:
     "@fect-ui/themes" "^2.2.0"
     "@fect-ui/vue-hooks" "^1.1.0"

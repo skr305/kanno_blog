@@ -2,6 +2,7 @@ import { User, Badge, Spacer, GridGroup, Grid, Link, Avatar, Card, Image, Dot, T
 
 Image.name = 'feImg'
 
+import '@fect-ui/themes'
 import '@fect-ui/vue/lib/main.css'
 
 const UI = [User, Badge, Spacer, GridGroup, Grid, Link, Avatar, Card, Image, Dot, Tabs, Tab]
