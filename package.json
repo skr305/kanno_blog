@@ -9,7 +9,7 @@
     "build:client": "vite build --ssrManifest --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.ts --outDir dist/server",
     "serve": "cross-env NODE_ENV=production ts-node scripts/server.ts",
-    "create": "node scripts/create.js"
+    "post": "node scripts/create.js"
   },
   "repository": {
     "type": "git",
