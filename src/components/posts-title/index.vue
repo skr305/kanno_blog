@@ -1,6 +1,6 @@
 <template>
   <div class="posts-title">
-    <h1>{{ title }}</h1>
+    <h2>{{ title }}</h2>
     <div class="date-box">
       <p>
         <span>{{ new Date(date).toLocaleString('zh-cn') }}</span>
