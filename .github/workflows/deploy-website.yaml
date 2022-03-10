@@ -36,11 +36,12 @@ jobs:
             tar zxvf kanno_blog-v1.0.0.tgz
             rm -f kanno_blog-v1.0.0.tgz
             unalias cp
+            rm -rf kanno-blog
+            mkdir kanno-blog
             cp -rf package/. kanno-blog/ 
             rm -rf package 
             cd kanno-blog
             rm -rf .github/
             yarn install
-            rm -rf dist
             yarn build
             pm2 reload pm2.config.js
