@@ -41,5 +41,6 @@ jobs:
             cd kanno-blog
             rm -rf .github/
             yarn install
+            rm -rf dist
             yarn build
             pm2 reload pm2.config.js
