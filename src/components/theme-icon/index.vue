@@ -31,5 +31,7 @@ export default defineComponent({
 <style scoped>
 .theme-icon {
   margin-left: auto;
+  height: 20px;
+  width: 20px;
 }
 </style>

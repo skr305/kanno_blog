@@ -1,13 +1,18 @@
 <template>
   <div class="profile-links">
-    <fe-tabs v-model:active="actived" hide-border hide-divider @click="tabClickHandler">
-      <fe-tab class="profile-tab" v-for="item in links" :key="item.tip" :title="item.tip" :value="item.route" />
-    </fe-tabs>
+    <fe-skeleton :loading="load">
+      <template #skeleton>
+        <fe-skeleton-item style="width: 230px; height: 48px" />
+      </template>
+      <fe-tabs v-model:active="actived" hide-border hide-divider @click="tabClickHandler">
+        <fe-tab class="profile-tab" v-for="item in links" :key="item.tip" :title="item.tip" :value="item.route" />
+      </fe-tabs>
+    </fe-skeleton>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 export default defineComponent({
   name: 'ProfileLinks',
@@ -29,11 +34,17 @@ export default defineComponent({
     const actived = ref('note')
     const route = useRouter()
 
+    const load = ref(false)
+
+    onMounted(() => {
+      setTimeout(() => (load.value = true), 150)
+    })
+
     const tabClickHandler = (e) => {
       route.push({ name: e.target.checkValue })
     }
 
-    return { links, tabClickHandler, actived }
+    return { links, tabClickHandler, actived, load }
   }
 })
 </script>

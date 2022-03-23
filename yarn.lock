@@ -63,23 +63,23 @@
   resolved "https://registry.yarnpkg.com/@fect-ui/themes/-/themes-2.2.0.tgz#3042d2a9076699f6ca3ba79b6db6f7eb70d760ff"
   integrity sha512-1CIJonLeCkYqAomA+T5QqngplP7pCsf/ISDOMZSEQ4v0rvQWTxHWrMQyremiGGbDy3z5HsqrhmSPiBPvyEzrMA==
 
-"@fect-ui/vue-hooks@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@fect-ui/vue-hooks/-/vue-hooks-1.1.0.tgz#3c9ecef346a757fd642cdc4dee29134d10baf404"
-  integrity sha512-7pr9ksrS17348/S6K8jrp6NkhGyHBjA/Su9CxDf5YcEcP3OcjtrfUbB0Xo6+pf02IZ+aZvVdctrlSJsP7gX39w==
+"@fect-ui/vue-hooks@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/@fect-ui/vue-hooks/-/vue-hooks-1.1.2.tgz#afdee27d4be095b58a190b2e98fdc7383ca5582e"
+  integrity sha512-FuJreUN9QKM6YCrrm8cR+S0kEWWtAmvlOQG4X/ZAY8wFES83KWul9NxAlHb2ifhWSLjfYDl2vaQTPG8WwY0N1g==
 
 "@fect-ui/vue-icons@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@fect-ui/vue-icons/-/vue-icons-2.0.0.tgz#e3786f2c27bf653f351c9696df4467a29e2b85c3"
   integrity sha512-/ZhSicpoZIk/Ib9nZ3iTCUd8sR0JgAKB2PIZQexcwBko7XMxNOfpAbm1SPoZOB8WicaNyAr80sInzJb7+C8QYg==
 
-"@fect-ui/vue@^1.3.9":
-  version "1.3.9"
-  resolved "https://registry.npmjs.org/@fect-ui/vue/-/vue-1.3.9.tgz#167c57f93ef0141ff3a94979cecf1e867b00cedb"
-  integrity sha512-Mk+FuPXJAzJHOnjFzXEt0uGheuPtol/Vw1cdK3cwGb1U95aah6chfMqFpsDXuYzmwfjurW8JS0DQb8P2RjcY5g==
+"@fect-ui/vue@canary":
+  version "1.4.0-rc.0"
+  resolved "https://registry.npmjs.org/@fect-ui/vue/-/vue-1.4.0-rc.0.tgz#e6a83c33779c867e3ffeff597b1120f3cc461544"
+  integrity sha512-UoZE1U+i5jWw09H+t493dmZ9hWm7xVJpr5wMl0IfiricMp+6SoON0gaYZ/NF6Fpji/w1uO4RvAuQfjOiDPNgow==
   dependencies:
     "@fect-ui/themes" "^2.2.0"
-    "@fect-ui/vue-hooks" "^1.1.0"
+    "@fect-ui/vue-hooks" "^1.1.2"
     "@popperjs/core" "^2.11.2"
     proy "^0.0.3"
 
