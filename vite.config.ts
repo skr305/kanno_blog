@@ -11,11 +11,11 @@ export default defineConfig({
     Markdown({
       headEnabled: true,
       markdownItOptions: {
-        highlight: (str, lang, attrs) => {
+        highlight: (str, lang) => {
           return `<pre class='language-${lang}' tabindex='0'><code class='language-${lang}'>${Prism.highlight(
             str,
-            Prism.languages[lang],
-            attrs
+            Prism.languages.javascript,
+            lang
           )}</code></pre>`
         }
       }
