@@ -13,5 +13,10 @@
     "src": "https://user-images.githubusercontent.com/52351095/155255077-653cd38d-e2a2-4b1a-9bac-dd1dd16bcb49.png",
     "url": "https://github.com/XeryYue/vite-compression-plugin",
     "description": "compress souce file by stream, use it in vite."
+  },
+  "grm": {
+    "src": "https://user-images.githubusercontent.com/52351095/161879370-007ff457-3bd2-4a8f-adde-6723a8167139.png",
+    "url": "https://github.com/XeryYue/grm",
+    "description": "A mini npm source manager.It's fast."
   }
 }

@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent } from 'vue'
 import { useTheme } from '@fect-ui/vue'
 import { createLayoutContext } from './use-layout-context'
 import ThemeIcon from '../theme-icon/index.vue'

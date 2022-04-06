@@ -3,7 +3,6 @@ import Notes from './pages/notes.vue'
 import Project from './pages/project.vue'
 import Resume from './pages/resume.vue'
 import Posts from './pages/posts.vue'
-import NotFound from './pages/not-found.vue'
 const camlize = (str: string) => str.replace(/-(\w)/g, (_, $1) => $1.toUpperCase())
 
 const finder = (part: Record<string, any>) => {

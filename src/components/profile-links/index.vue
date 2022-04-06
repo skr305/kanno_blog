@@ -1,13 +1,8 @@
 <template>
   <div class="profile-links">
-    <fe-skeleton :loading="load">
-      <template #skeleton>
-        <fe-skeleton-item style="width: 230px; height: 48px" />
-      </template>
-      <fe-tabs v-model:active="actived" hide-border hide-divider @click="tabClickHandler">
-        <fe-tab class="profile-tab" v-for="item in links" :key="item.tip" :title="item.tip" :value="item.route" />
-      </fe-tabs>
-    </fe-skeleton>
+    <fe-tabs v-model:active="actived" hide-border hide-divider @click="tabClickHandler">
+      <fe-tab class="profile-tab" v-for="item in links" :key="item.tip" :title="item.tip" :value="item.route" />
+    </fe-tabs>
   </div>
 </template>
 
