@@ -11,6 +11,7 @@ export interface RenderResult {
   code: number
   html: string
   head: string
+  _document: string
   preloadLinks: string
 }
 
@@ -29,16 +30,17 @@ const renderScripts = (data: any, manifest) => {
 }
 
 const renderHTML = async (vueApp: VueApp, url: string, manifest: Record<string, any>) => {
-  const { app, router, head: _head } = vueApp
+  const { app, router, head: _head, _document } = vueApp
   await router.push(url)
   await router.isReady()
 
   const ssrContext = {} as any
   const html = await renderToString(app, ssrContext)
+  const _doc = await renderToString(_document)
   const { headTags: head } = renderHeadToString(_head)
   const preloadLinks = renderScripts(ssrContext.modules, manifest)
 
-  return { html, head, preloadLinks }
+  return { html, head, preloadLinks, _document: _doc }
 }
 
 // render application

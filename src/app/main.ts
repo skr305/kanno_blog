@@ -7,6 +7,7 @@ import { CreateAppFunction } from 'vue'
 import { createHead } from '@vueuse/head'
 import { RouterHistory } from 'vue-router'
 import App from './App.vue'
+import _Document from './_Document.vue'
 import { UIRegister } from './plugins/ui'
 import { createUniveralRouter } from './router'
 
@@ -19,6 +20,7 @@ export type VueApp = ReturnType<typeof createVueApp>
 
 export const createVueApp = (context: VueAppContext) => {
   const app = context.appCreator(App)
+  const _document = context.appCreator(_Document)
   const head = createHead()
   const router = createUniveralRouter({ history: context.histroyCreator() })
 
@@ -30,5 +32,5 @@ export const createVueApp = (context: VueAppContext) => {
   app.use(router)
   UIRegister(app)
 
-  return { app, head, router }
+  return { app, head, router, _document }
 }

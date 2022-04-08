@@ -6,6 +6,7 @@ import c2k from 'koa-connect'
 import { createServer } from 'vite'
 import { ROOT_PATH } from '../helpers/config'
 import { RenderResult } from '@/ssr'
+import { resolveTemplate } from './template'
 
 export const devRenderServer = async (app: Koa, router: KoaRouter) => {
   const viteServer = await createServer({
@@ -34,16 +35,10 @@ export const devRenderServer = async (app: Koa, router: KoaRouter) => {
 
       const renderResult: RenderResult = await renderAPPlication(ctx)
 
-      const html = template
-        .replace('<!--document-title-->', renderResult.head)
-        // .replace('<!-- _document -->', _document)
-        .replace(`<!--preload-links-->`, renderResult.preloadLinks)
-        .replace(`<!--app-html-->`, renderResult.html)
-
       await next()
       ctx.set({ 'Content-Type': 'text/html' })
       ctx.state = renderResult.code
-      ctx.body = html
+      ctx.body = resolveTemplate({ ...renderResult, template })
     } catch (error) {
       viteServer.ssrFixStacktrace(error)
     }

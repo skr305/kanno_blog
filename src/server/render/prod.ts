@@ -4,6 +4,7 @@ import path from 'path'
 import KoaRouter from '@koa/router'
 import { PROD_CLIENT_PATH, PROD_SERVER_PATH, PUBLIC_PATH } from '../helpers/config'
 import { RenderResult } from '@/ssr'
+import { resolveTemplate } from './template'
 
 export const prodRenderServer = async (app: Koa, router: KoaRouter) => {
   // middleware
@@ -24,15 +25,10 @@ export const prodRenderServer = async (app: Koa, router: KoaRouter) => {
   router.get('/(.*)', async (ctx, next) => {
     try {
       const renderResult: RenderResult = await renderAPPlication(ctx, manifest)
-      const html = template
-        .replace('<!--document-title-->', renderResult.head)
-        // .replace('<!-- _document -->', _document)
-        .replace(`<!--preload-links-->`, renderResult.preloadLinks)
-        .replace(`<!--app-html-->`, renderResult.html)
       await next()
       ctx.set({ 'Content-Type': 'text/html' })
       ctx.state = renderResult.code
-      ctx.body = html
+      ctx.body = resolveTemplate({ ...renderResult, template })
     } catch (error) {
       //
     }
