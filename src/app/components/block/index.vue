@@ -1,22 +1,23 @@
 <template>
   <div class="block">
     <slot />
-    <fe-spacer />
-    <fe-grid-group class="content" :gap="2">
-      <fe-grid v-for="link in links" :key="link" :xs="24" :sm="8" :md="8" :lg="8" :xl="8" align-items="center">
-        <fe-link class="link__box" :href="finder(link, 'url')">
-          <fe-card shadow hoverable>
-            <div class="image">
-              <fe-img :src="finder(link, 'src')" skeleton width="100%" height="150px" />
-            </div>
-            <div class="summary">
-              <h5>{{ link }}</h5>
-              <span>{{ finder(link, 'description') }}</span>
-            </div>
-          </fe-card>
-        </fe-link>
-      </fe-grid>
-    </fe-grid-group>
+    <div class="content">
+      <fe-grid-group :gap="2">
+        <fe-grid v-for="link in links" :key="link" :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+          <fe-link class="link__box" :href="finder(link, 'url')">
+            <fe-card shadow hoverable>
+              <div class="image">
+                <fe-img :src="finder(link, 'src')" skeleton width="100%" height="150px" />
+              </div>
+              <div class="summary">
+                <h5>{{ link }}</h5>
+                <span>{{ finder(link, 'description') }}</span>
+              </div>
+            </fe-card>
+          </fe-link>
+        </fe-grid>
+      </fe-grid-group>
+    </div>
   </div>
 </template>
 
@@ -66,8 +67,9 @@ export default defineComponent({
 
 @media only screen and (max-width: 767px) {
   .content {
-    width: 80%;
-    margin: 0 auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 var(--fect-gap-half);
   }
 }
 </style>

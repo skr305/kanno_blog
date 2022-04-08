@@ -7,7 +7,7 @@ import { CreateAppFunction } from 'vue'
 import { createHead } from '@vueuse/head'
 import { RouterHistory } from 'vue-router'
 import App from './App.vue'
-import _Document from './_Document.vue'
+import _Document from './_document.vue'
 import { UIRegister } from './plugins/ui'
 import { createUniveralRouter } from './router'
 

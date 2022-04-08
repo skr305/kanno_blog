@@ -45,17 +45,18 @@ export default defineComponent({
 
 <style lang="css" scoped>
 .layout {
-  width: 100vw;
+  height: auto;
+  width: 100%;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
   min-height: 100vh;
 }
 .layout__container {
+  box-sizing: border-box;
+
   width: 100%;
   max-width: 750px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   position: relative;
 }
 @media only screen and (max-width: 767px) {
