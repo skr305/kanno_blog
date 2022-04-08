@@ -49,9 +49,10 @@ const createServer = async (root = cwd, isProd = process.env.NODE_ENV === 'produ
         template = indexProd
         render = require('../dist/server/entry-server.js').render
       }
-      const [appHtml, preloadLinks, headTags, hasMatch] = await render(url, manifest)
+      const [appHtml, preloadLinks, headTags, hasMatch, _document] = await render(url, manifest)
       const html = template
         .replace('<!--document-title-->', headTags)
+        .replace('<!-- _document -->', _document)
         .replace(`<!--preload-links-->`, preloadLinks)
         .replace(`<!--app-html-->`, appHtml)
       await next()
