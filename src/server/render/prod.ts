@@ -29,9 +29,6 @@ export const prodRenderServer = async (app: Koa, router: KoaRouter) => {
       ctx.set({ 'Content-Type': 'text/html' })
       ctx.state = renderResult.code
       ctx.body = resolveTemplate({ ...renderResult, template })
-    } catch (error) {
-      //
-      return renderError(ctx, error)
-    }
+    } catch (error) {}
   })
 }

@@ -41,9 +41,6 @@ export const devRenderServer = async (app: Koa, router: KoaRouter) => {
       ctx.body = resolveTemplate({ ...renderResult, template })
     } catch (error) {
       viteServer.ssrFixStacktrace(error)
-      const rendeResult = await renderError(ctx, error)
-      ctx.state = rendeResult.code
-      ctx.body = resolveTemplate({ ...rendeResult, template })
     }
   })
 }
