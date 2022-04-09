@@ -3,7 +3,7 @@ import Koa from 'koa'
 import path from 'path'
 import KoaRouter from '@koa/router'
 import { PROD_CLIENT_PATH, PROD_SERVER_PATH, PUBLIC_PATH } from '../helpers/config'
-import { RenderResult } from '@/ssr'
+import { renderError, RenderResult } from '@/ssr'
 import { resolveTemplate } from './template'
 
 export const prodRenderServer = async (app: Koa, router: KoaRouter) => {
@@ -31,6 +31,7 @@ export const prodRenderServer = async (app: Koa, router: KoaRouter) => {
       ctx.body = resolveTemplate({ ...renderResult, template })
     } catch (error) {
       //
+      return renderError(ctx, error)
     }
   })
 }

@@ -3,14 +3,12 @@ import { createMemoryHistory } from 'vue-router'
 import { renderToString } from '@vue/server-renderer'
 import type { ExtendableContext } from 'koa'
 import { createVueApp, VueApp } from './app/main'
-import { renderHeadToString } from '@vueuse/head'
-import { SUCCESS_CODE } from './constants/http-state'
+import { INVALID_ERROR, SUCCESS_CODE } from './constants/http-state'
 import { renderPreloadLinks } from './un/scripts'
 
 export interface RenderResult {
   code: number
   html: string
-  head: string
   _document: string
   preloadLinks: string
 }
@@ -30,17 +28,34 @@ const renderScripts = (data: any, manifest) => {
 }
 
 const renderHTML = async (vueApp: VueApp, url: string, manifest: Record<string, any>) => {
-  const { app, router, head: _head, _document } = vueApp
+  const { app, router, _document } = vueApp
   await router.push(url)
   await router.isReady()
 
   const ssrContext = {} as any
   const html = await renderToString(app, ssrContext)
   const _doc = await renderToString(_document)
-  const { headTags: head } = renderHeadToString(_head)
   const preloadLinks = renderScripts(ssrContext.modules, manifest)
 
-  return { html, head, preloadLinks, _document: _doc }
+  return { html, preloadLinks, _document: _doc }
+}
+
+/**
+ * handle error
+ * @name error render
+ * 1. server runtime err
+ * 2. render  err
+ * 3. router not found(404)
+ */
+
+export const renderError = async (ctx: ExtendableContext, err: Error): Promise<RenderResult> => {
+  const { app, _document } = createVueAppInstance()
+  return {
+    code: (err as any).code ?? INVALID_ERROR,
+    html: await renderToString(app),
+    _document: await renderToString(_document),
+    preloadLinks: ''
+  }
 }
 
 // render application
@@ -55,6 +70,6 @@ export const renderAPPlication = async (ctx: ExtendableContext, manifest = {}) =
       ...rendered
     }
   } catch (error) {
-    return { code: error.code }
+    return renderError(ctx, error)
   }
 }

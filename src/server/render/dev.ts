@@ -27,7 +27,7 @@ export const devRenderServer = async (app: Koa, router: KoaRouter) => {
   router.get('/(.*)', async (ctx, next) => {
     let template = fs.readFileSync(path.resolve(ROOT_PATH, 'index.html'), 'utf8')
 
-    const { renderAPPlication } = await viteServer.ssrLoadModule('/src/ssr.ts')
+    const { renderAPPlication, renderError } = await viteServer.ssrLoadModule('/src/ssr.ts')
 
     try {
       const url = ctx.originalUrl
@@ -41,6 +41,9 @@ export const devRenderServer = async (app: Koa, router: KoaRouter) => {
       ctx.body = resolveTemplate({ ...renderResult, template })
     } catch (error) {
       viteServer.ssrFixStacktrace(error)
+      const rendeResult = await renderError(ctx, error)
+      ctx.state = rendeResult.code
+      ctx.body = resolveTemplate({ ...rendeResult, template })
     }
   })
 }

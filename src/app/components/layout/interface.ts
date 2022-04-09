@@ -1,3 +1,3 @@
 import type { BLOG_CONFIG } from '../../../../blog.config'
 
-export type LayoutProvide = BLOG_CONFIG
+export type LayoutContext = BLOG_CONFIG
