@@ -5,7 +5,7 @@
 
 const CONFIG = {
   author: 'Kanno',
-  title: 'Kanno.blog',
+  title: "Kanno's Blog",
   avatar: 'https://avatars.githubusercontent.com/u/52351095?s=100&v=4',
   introduce: 'Gopher & font-end developer',
   language: 'en-us',
