@@ -2,9 +2,12 @@
   <div class="layout">
     <div class="layout__container">
       <fe-spacer />
-      <theme-icon :theme="theme" @click="themeChange" />
+      <themes />
       <profile />
-      <slot />
+      <client-only>
+        <profile-links />
+      </client-only>
+      <router-view />
       <fe-spacer :y="5" />
       <concat />
     </div>
@@ -13,26 +16,20 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useTheme } from '@fect-ui/vue'
-import { createLayoutContext } from './use-layout-context'
-import ThemeIcon from '../theme-icon/index.vue'
+import Themes from '../theme-icon/index.vue'
 import Concat from '../concat/index.vue'
 import Profile from '../profile/index.vue'
-import BLOGCONFIG from '../../../../blog.config'
+import ProfileLinks from '../profile-links/index.vue'
 
 export default defineComponent({
   name: 'Layout',
   components: {
-    ThemeIcon,
+    Themes,
+    ProfileLinks,
     Profile,
     Concat
   },
-  setup() {
-    const { theme, themeChange } = useTheme()
-    createLayoutContext(BLOGCONFIG)
-
-    return { theme, themeChange }
-  }
+  setup() {}
 })
 </script>
 

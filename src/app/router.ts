@@ -1,9 +1,10 @@
 import { createRouter, RouteRecordRaw, RouterHistory } from 'vue-router'
-import Notes from './pages/notes.vue'
-import Project from './pages/project.vue'
-import Resume from './pages/resume.vue'
-import Posts from './pages/posts.vue'
-import { camlize } from './utils/strings'
+import Notes from '@/pages/notes.vue'
+import Project from '@/pages/project.vue'
+import Resume from '@/pages/resume.vue'
+import Posts from '@/pages/posts.vue'
+import { camlize } from '@/utils/strings'
+import { NOT_FOUND } from '@/constants/http-state'
 
 const finder = (part: Record<string, any>) => {
   return Object.keys(part).map((mod) => {
@@ -27,7 +28,8 @@ export enum RouteName {
   Note = 'note',
   Notes = 'notes',
   Project = 'project',
-  Resume = 'resume'
+  Resume = 'resume',
+  Error = 'error'
 }
 
 const routes: RouteRecordRaw[] = [
@@ -50,6 +52,20 @@ const routes: RouteRecordRaw[] = [
     path: '/notes',
     component: Posts,
     children: [...notes]
+  },
+  {
+    name: RouteName.Error,
+    path: '/:error(.*)',
+    component: {},
+    meta: {
+      ssrCacheAge: false,
+      async validate() {
+        return Promise.reject({
+          code: NOT_FOUND,
+          message: 'This page could not be found.'
+        })
+      }
+    }
   }
 ]
 
