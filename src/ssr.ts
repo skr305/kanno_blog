@@ -9,7 +9,6 @@ export interface RenderResult {
   code: number
   html: string
   _document: string
-  preloadLinks: string
 }
 
 // create vue App instance
@@ -32,9 +31,8 @@ const renderHTML = async (vueApp: VueApp, url: string) => {
   const ssrContext = {} as any
   const html = await renderToString(app, ssrContext)
   const _doc = await renderToString(_document)
-  const preloadLinks = renderScripts(ssrContext.modules)
 
-  return { html, preloadLinks, _document: _doc }
+  return { html, _document: _doc }
 }
 
 /**
@@ -51,8 +49,7 @@ export const renderError = async (ctx: ExtendableContext, err: Error): Promise<R
   const res = {
     code: (err as any).code ?? INVALID_ERROR,
     html: await renderToString(app),
-    _document: await renderToString(_document),
-    preloadLinks: ''
+    _document: await renderToString(_document)
   }
   return res
 }

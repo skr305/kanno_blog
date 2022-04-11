@@ -7,7 +7,7 @@
     "spa:dev": "vite",
     "dev": "cross-env NODE_ENV=development ts-node -r tsconfig-paths/register src/bootstrap.ts",
     "build": "npm run build:client && npm run build:server",
-    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/ssr.ts --outDir dist/server",
     "serve": "cross-env NODE_ENV=production ts-node -r tsconfig-paths/register src/bootstrap.ts",
     "post": "node scripts/create.js"
