@@ -35,7 +35,6 @@ export default defineComponent({
   padding: var(--fect-gap-quarter);
   z-index: 1;
   margin-top: auto;
-  /* position: absolute; */
   position: relative;
   bottom: var(--fect-gap);
   left: 50%;

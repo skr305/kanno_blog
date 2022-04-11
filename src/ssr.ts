@@ -31,7 +31,7 @@ const renderScripts = (data: any) => {
 }
 
 const renderHTML = async (vueApp: VueApp, url: string) => {
-  const { app, router, _document, globalState } = vueApp
+  const { app, router, _document } = vueApp
   await router.push(url)
   await router.isReady()
 
