@@ -1,6 +1,6 @@
 import { getSSRSymbleStatus } from '../un/context'
 
-export const isSSR = typeof window !== 'undefined' && getSSRSymbleStatus()
+export const isSSR = typeof window === 'undefined' || getSSRSymbleStatus()
 export const isSPA = !isSSR
 
 // vite runtime env

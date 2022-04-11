@@ -1,14 +1,17 @@
 import { createSSRApp } from 'vue'
+import serialize from 'serialize-javascript'
 import { createMemoryHistory } from 'vue-router'
 import { renderToString } from '@vue/server-renderer'
 import type { ExtendableContext } from 'koa'
 import { createVueApp, VueApp } from './app/main'
 import { INVALID_ERROR, SUCCESS_CODE } from './constants/http-state'
+import { getSSRContextByApp, renderSSRContextScript, renderSSRSymbleScript } from './un/context'
 
 export interface RenderResult {
   code: number
   html: string
   _document: string
+  scripts: string
 }
 
 // create vue App instance
@@ -21,18 +24,25 @@ const createVueAppInstance = () => {
   return app
 }
 
-const renderScripts = (data: any) => {}
+const renderScripts = (data: any) => {
+  const ssrSymbleScript = renderSSRSymbleScript()
+  const ssrContextScript = renderSSRContextScript(serialize(data))
+  return [ssrSymbleScript, ssrContextScript].join('\n')
+}
 
 const renderHTML = async (vueApp: VueApp, url: string) => {
-  const { app, router, _document } = vueApp
+  const { app, router, _document, globalState } = vueApp
   await router.push(url)
   await router.isReady()
 
   const ssrContext = {} as any
   const html = await renderToString(app, ssrContext)
   const _doc = await renderToString(_document)
+  const scripts = renderScripts({
+    ...getSSRContextByApp(app)
+  })
 
-  return { html, _document: _doc }
+  return { html, _document: _doc, scripts }
 }
 
 /**
@@ -46,10 +56,14 @@ const renderHTML = async (vueApp: VueApp, url: string) => {
 export const renderError = async (ctx: ExtendableContext, err: Error): Promise<RenderResult> => {
   const { app, _document, globalState } = createVueAppInstance()
   globalState.setRenderError(err)
+
   const res = {
     code: (err as any).code ?? INVALID_ERROR,
     html: await renderToString(app),
-    _document: await renderToString(_document)
+    _document: await renderToString(_document),
+    scripts: renderScripts({
+      ...getSSRContextByApp(app)
+    })
   }
   return res
 }

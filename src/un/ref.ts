@@ -24,14 +24,12 @@ const isProxyable = (value: unknown): value is Record<string, unknown> => {
   return Boolean(value) && typeof value === 'object'
 }
 
-export const ssrRef = <T>(key: string, souceValue: T | (() => T)): Ref => {
+export const ssrRef = <T>(key: string, souceValue: T | (() => T)): Ref<T> => {
   if (isSPA) {
     return ref(getValue(souceValue)) as Ref<T>
   }
-
   //   ssr
   let value = isClient ? getRefData(key) ?? getValue(souceValue) : getValue(souceValue)
-
   if (isClient) {
     return ref(value) as Ref<T>
   }
@@ -39,7 +37,6 @@ export const ssrRef = <T>(key: string, souceValue: T | (() => T)): Ref => {
   if (souceValue instanceof Function) {
     setRefData(key, value)
   }
-
   const getProxy = <T extends Record<string | number, any>>(
     track: () => void,
     trigger: () => void,

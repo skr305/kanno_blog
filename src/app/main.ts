@@ -12,6 +12,7 @@ import _Document from '@/components/universal/_document.vue'
 import ExtranalComponent from '@/plugins/ui'
 import InternalComponent from '@/plugins/component'
 import { createUniveralRouter } from './router'
+import { initlizeSSRContext } from '@/un/context'
 
 export interface VueAppContext {
   appCreator: CreateAppFunction<Element>
@@ -22,6 +23,7 @@ export type VueApp = ReturnType<typeof createVueApp>
 
 export const createVueApp = (context: VueAppContext) => {
   const app = context.appCreator(App)
+  initlizeSSRContext(app)
   const _document = context.appCreator(_Document)
   const head = createHead()
   const globalState = createGlobalState()
