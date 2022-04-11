@@ -37,7 +37,7 @@ export default defineComponent({
 
 .not-found > .social {
   display: flex;
-  height: 50px;
+  height: 40px;
   align-items: center;
 }
 
@@ -45,11 +45,11 @@ export default defineComponent({
   display: block;
   height: 100%;
   text-align: center;
-  line-height: 50px;
+  line-height: 40px;
 }
 
 .not-found > .social .sub {
-  font-weight: 500;
+  font-weight: 550;
   font-size: 25px;
   height: 100%;
   box-sizing: border-box;
@@ -58,6 +58,6 @@ export default defineComponent({
 .not-found > .social .tip {
   box-sizing: border-box;
   padding-left: var(--fect-gap-half);
-  border-left: 1px solid var(--primary-foreground);
+  border-left: 1px solid var(--accents-7);
 }
 </style>

@@ -1,8 +1,9 @@
 <template>
-  <div v-cloak class="application"></div>
-  <captured>
-    <layout />
-  </captured>
+  <div v-cloak class="application">
+    <captured>
+      <layout />
+    </captured>
+  </div>
 </template>
 
 <script>
@@ -23,5 +24,9 @@ export default defineComponent({
 .application[v-cloak] {
   color: transparent;
   -webkit-text-fill-color: transparent;
+}
+.application {
+  --font-sans: 'LXGW WenKai', sans-serif;
+  font-family: var(--font-sans);
 }
 </style>

@@ -5,9 +5,7 @@ import KoaRouter from '@koa/router'
 import c2k from 'koa-connect'
 import { createServer } from 'vite'
 import { ROOT_PATH } from '../helpers/config'
-import { RenderResult } from '@/ssr'
 import { resolveTemplate } from './template'
-import { NOT_FOUND } from '@/constants/http-state'
 
 export const devRenderServer = async (app: Koa, router: KoaRouter) => {
   const viteServer = await createServer({
@@ -34,15 +32,15 @@ export const devRenderServer = async (app: Koa, router: KoaRouter) => {
       const url = ctx.originalUrl
       template = await viteServer.transformIndexHtml(url, template)
 
-      const renderResult: RenderResult = await renderAPPlication(ctx)
+      const renderResult = await renderAPPlication(ctx)
       await next()
-      ctx.state = renderResult.code
+      ctx.status = renderResult.code
       ctx.set({ 'Content-Type': 'text/html' })
       ctx.body = resolveTemplate({ ...renderResult, template })
     } catch (error) {
       viteServer.ssrFixStacktrace(error)
       const renderResult = await renderError(ctx, error)
-      ctx.state = renderResult.code
+      ctx.status = renderResult.code
       ctx.body = resolveTemplate({ ...renderResult, template })
     }
   })

@@ -4,7 +4,6 @@ import { renderToString } from '@vue/server-renderer'
 import type { ExtendableContext } from 'koa'
 import { createVueApp, VueApp } from './app/main'
 import { INVALID_ERROR, SUCCESS_CODE } from './constants/http-state'
-import { renderPreloadLinks } from './un/scripts'
 
 export interface RenderResult {
   code: number
@@ -23,19 +22,17 @@ const createVueAppInstance = () => {
   return app
 }
 
-const renderScripts = (data: any, manifest) => {
-  return renderPreloadLinks(data, manifest)
-}
+const renderScripts = (data: any) => {}
 
-const renderHTML = async (vueApp: VueApp, url: string, manifest: Record<string, any>) => {
-  const { app, router, _document, globalState } = vueApp
+const renderHTML = async (vueApp: VueApp, url: string) => {
+  const { app, router, _document } = vueApp
   await router.push(url)
   await router.isReady()
 
   const ssrContext = {} as any
   const html = await renderToString(app, ssrContext)
   const _doc = await renderToString(_document)
-  const preloadLinks = renderScripts(ssrContext.modules, manifest)
+  const preloadLinks = renderScripts(ssrContext.modules)
 
   return { html, preloadLinks, _document: _doc }
 }
@@ -62,11 +59,11 @@ export const renderError = async (ctx: ExtendableContext, err: Error): Promise<R
 
 // render application
 
-export const renderAPPlication = async (ctx: ExtendableContext, manifest = {}) => {
+export const renderAPPlication = async (ctx: ExtendableContext) => {
   const app = createVueAppInstance()
   const url = ctx.originalUrl
   try {
-    const rendered = await renderHTML(app, url, manifest)
+    const rendered = await renderHTML(app, url)
     return {
       code: SUCCESS_CODE,
       ...rendered

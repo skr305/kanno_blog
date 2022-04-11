@@ -45,7 +45,7 @@ export default defineComponent({
 }
 
 .link__box:hover {
-  color: initial;
+  color: var(--primary-foreground);
 }
 
 .image {
