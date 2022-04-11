@@ -2,17 +2,17 @@
   <div :class="bem('main')">
     <layout-header :sub-title="title" />
     <main :class="bem('container')">
-      <fe-grid-group :gap="1">
-        <fe-grid :class="bem('nav')" :sm="6" :xs="6">
-          <layout-nav :user-info="userInfo" />
-        </fe-grid>
-        <fe-grid :class="bem('content')" :sm="12" :xs="24">
+      <div :class="bem('nav')">
+        <layout-nav :user-info="userInfo" />
+      </div>
+      <div :class="bem('content')">
+        <div :class="bem('inner')">
           <router-view />
-        </fe-grid>
-        <fe-grid :class="bem('aside')" :sm="6" :xs="6">
+        </div>
+        <div :class="bem('aside')">
           <layout-aside :user-info="userInfo" />
-        </fe-grid>
-      </fe-grid-group>
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -61,6 +61,28 @@ export default defineComponent({
     margin: 0 auto;
     margin-top: 4.5rem;
     width: 100%;
+    display: flex;
+  }
+  &__nav {
+    z-index: 100;
+    position: fixed;
+    width: 210px;
+  }
+  &__content {
+    width: calc(100% - 211px);
+    margin-left: 211px;
+    padding: 0 5px;
+    height: auto;
+    display: flex;
+  }
+  &__inner {
+    width: calc(100% - 352px);
+    min-width: 500px;
+    overflow: hidden;
+  }
+  &__aside {
+    width: 300px;
+    margin-left: 5px;
   }
   &__articles {
     width: 100%;
@@ -71,6 +93,14 @@ export default defineComponent({
     &__aside {
       width: 0;
       display: none;
+    }
+    &__content {
+      width: 95vw;
+      margin: 0 auto;
+    }
+    &__inner {
+      min-width: 100%;
+      width: 100%;
     }
   }
 }

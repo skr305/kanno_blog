@@ -14,7 +14,7 @@
         </div>
       </fe-col>
       <fe-col :span="6">
-        <fe-img src="https://avatars.githubusercontent.com/u/52351095?s=100&v=4" width="100%" height="100%" />
+        <!-- <fe-img src="https://avatars.githubusercontent.com/u/52351095?s=100&v=4" width="100%" height="100%" /> -->
       </fe-col>
     </fe-row>
   </li>

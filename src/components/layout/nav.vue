@@ -74,7 +74,6 @@ export default defineComponent({
   &__list {
     width: 100%;
     background-color: var(--primary-background);
-    box-shadow: var(--fect-shadowSmall);
     border-radius: var(--fect-radius);
     border: 1px solid var(--accents-2);
     :deep(.fect-link) {

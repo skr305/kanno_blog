@@ -42,6 +42,7 @@ export default defineComponent({
 <style lang="less" scoped>
 .kanno-desktop {
   &__header {
+    z-index: 999;
     position: fixed;
     top: 0;
     left: 0;

@@ -2,6 +2,8 @@
   <div :class="bem('aside')">
     <fe-card :class="bem('user')"> 1 </fe-card>
     <fe-spacer :y="1" />
+    <fe-card :class="bem('user')"> 2 </fe-card>
+    <fe-spacer :y="1" />
     <p :class="bem('widgets')">Powered by Fect</p>
   </div>
 </template>

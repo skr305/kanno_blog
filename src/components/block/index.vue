@@ -1,11 +1,10 @@
 <template>
   <div class="block">
-    <slot />
     <div class="content">
-      <fe-grid-group :gap="2">
-        <fe-grid v-for="link in links" :key="link" :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+      <fe-grid-group class="block__grid--group" :gap="0.5">
+        <fe-grid v-for="link in links" :key="link" :xs="22" :sm="12">
           <fe-link class="link__box" :href="finder(link, 'url')">
-            <fe-card shadow hoverable>
+            <fe-card shadow hoverable style="background-color: var(--primary-background)">
               <div class="image">
                 <fe-img :src="finder(link, 'src')" skeleton width="100%" height="150px" />
               </div>
@@ -38,7 +37,11 @@ export default defineComponent({
 })
 </script>
 
-<style lang="css">
+<style lang="less">
+.content {
+  margin: 0 auto;
+}
+
 .link__box {
   width: 100% !important;
   height: inherit;
@@ -58,6 +61,7 @@ export default defineComponent({
 
 .summary span {
   width: 100%;
+  text-overflow: ellipsis;
   word-break: break-all;
   display: inline-block;
   line-height: 1.5rem;
@@ -66,10 +70,8 @@ export default defineComponent({
 }
 
 @media only screen and (max-width: 767px) {
-  .content {
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 0 var(--fect-gap-half);
+  .block__grid--group {
+    justify-content: center !important;
   }
 }
 </style>
