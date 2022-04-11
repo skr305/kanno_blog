@@ -23,7 +23,7 @@ import ThemeIcon from '@/components/theme-icon/index.vue'
 const bem = createBem('kanno-desktop')
 
 export default defineComponent({
-  name: 'DeskTopHeader',
+  name: 'LayoutHeader',
   components: { ThemeIcon, Activity },
   props: {
     subTitle: {

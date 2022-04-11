@@ -35,3 +35,13 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+.posts {
+  border-radius: var(--fect-radius);
+  box-sizing: border-box;
+  padding: 0 var(--fect-gap);
+  background-color: var(--primary-background);
+  width: 100%;
+}
+</style>

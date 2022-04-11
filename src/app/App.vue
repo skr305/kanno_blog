@@ -1,7 +1,7 @@
 <template>
   <div v-cloak class="application">
     <captured>
-      <layout />
+      <layout-main />
     </captured>
   </div>
 </template>
@@ -9,12 +9,12 @@
 <script>
 import { defineComponent } from 'vue'
 import Captured from '@/components/universal/captured.vue'
-import DeskTopMain from '@/components/layout/desktop/main.vue'
+import LayoutMain from '@/components/layout/main.vue'
 
 export default defineComponent({
   components: {
     Captured,
-    DeskTopMain
+    LayoutMain
   },
   setup(props) {}
 })

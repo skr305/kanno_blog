@@ -1,12 +1,6 @@
 <template>
   <div :class="bem('aside')">
-    <fe-card :class="bem('user')">
-      <fe-avatar :src="userInfo.avatar" size="large" />
-      <div class="summary">
-        <p>{{ userInfo.author }}</p>
-        <p>{{ userInfo.introduce }}</p>
-      </div>
-    </fe-card>
+    <fe-card :class="bem('user')"> 1 </fe-card>
     <fe-spacer :y="1" />
     <p :class="bem('widgets')">Powered by Fect</p>
   </div>
@@ -19,7 +13,7 @@ import { createBem } from '@/utils/bem'
 const bem = createBem('kanno-desktop')
 
 export default defineComponent({
-  name: 'DeskTopAside',
+  name: 'LayoutAside',
   props: {
     userInfo: {
       type: Object
