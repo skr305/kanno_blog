@@ -6,7 +6,7 @@ import { INVALID_ERROR } from '@/constants/http-state'
 import { ssrRef } from '@/un/ref'
 import { CONFIG } from '~/blog.config'
 import { useState } from '@fect-ui/vue-hooks'
-import { readonly, inject, App, ref } from 'vue'
+import { readonly, inject, App } from 'vue'
 
 type RenderErrorValue = RenderError | null
 export interface RenderError {
