@@ -1,10 +1,10 @@
 {
-  "Fect Vue": {
+  "Fect": {
     "src": "https://user-images.githubusercontent.com/52351095/118687359-7e809480-b837-11eb-8083-b0504ec79652.png",
     "url": "https://github.com/fect-org/fect",
     "description": "Minimalist Vue UI components"
   },
-  "H265 Web.js": {
+  "H265Web.js": {
     "src": "https://user-images.githubusercontent.com/52351095/155254518-e30c2881-d9e7-44e4-841d-54b1a3eed35f.png",
     "url": "https://github.com/numberwolf/h265web.js",
     "description": "High performance web player"
