@@ -9,7 +9,6 @@
 import { defineComponent } from 'vue'
 import { Sun, Moon } from '@fect-ui/vue-icons'
 import { useTheme } from '@/un/theme'
-import { useTheme as useFectTheme } from '@fect-ui/vue'
 export default defineComponent({
   name: 'ThemeIcon',
   components: {
@@ -22,13 +21,12 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { emit }) {
     const { theme, toggle } = useTheme()
-    const { themeChange: fectThemeChange } = useFectTheme()
 
     return {
       theme,
       themeChange: () => {
         toggle()
-        fectThemeChange()
+        document.querySelector('html').setAttribute('class', theme.value)
       }
     }
   }
