@@ -12,11 +12,13 @@ import _Document from '@/components/universal/_document.vue'
 import ExtranalComponent from '@/plugins/ui'
 import InternalComponent from '@/plugins/component'
 import { createUniveralRouter } from './router'
+import { createTheme, Theme } from '@/un/theme'
 import { initlizeSSRContext } from '@/un/context'
 
 export interface VueAppContext {
   appCreator: CreateAppFunction<Element>
   histroyCreator(base?: string): RouterHistory
+  theme: Theme
 }
 
 export type VueApp = ReturnType<typeof createVueApp>
@@ -28,6 +30,8 @@ export const createVueApp = (context: VueAppContext) => {
   const head = createHead()
   const globalState = createGlobalState()
   const router = createUniveralRouter({ history: context.histroyCreator() })
+
+  const theme = createTheme(context.theme)
 
   // handle global error
   app.config.errorHandler = (error) => {
@@ -53,10 +57,11 @@ export const createVueApp = (context: VueAppContext) => {
   })
 
   app.use(head)
+  app.use(theme)
   app.use(router)
   app.use(ExtranalComponent)
   app.use(InternalComponent)
   app.use(globalState)
 
-  return { app, head, router, _document, globalState }
+  return { app, head, router, _document, globalState, theme }
 }
