@@ -5,18 +5,27 @@ import Resume from '@/pages/resume.vue'
 import Posts from '@/pages/posts.vue'
 import { camlize } from '@/utils/strings'
 import { NOT_FOUND } from '@/constants/http-state'
+import { DefineComponent } from 'vue'
+
+interface MarkdownModule {
+  default: DefineComponent<any>
+  frontmatter: {
+    title: string
+    meta: Array<any>
+  }
+}
 
 const finder = (part: Record<string, any>) => {
   return Object.keys(part).map((mod) => {
-    const r = part[mod]
-    const name = camlize(r.meta[0].name)
+    const r = part[mod] as MarkdownModule
+    const name = camlize(r.frontmatter.meta[0].name)
     return {
-      path: r.meta[0].name,
+      path: r.frontmatter.meta[0].name,
       component: part[mod].default,
       name,
       meta: {
-        title: r.title,
-        date: r.meta[0].date
+        title: r.frontmatter.title,
+        date: r.frontmatter.meta[0].date
       }
     }
   })
@@ -50,8 +59,8 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/notes',
-    component: Posts,
-    children: [...notes]
+    component: Posts
+    // children: [...notes]
   },
   {
     name: RouteName.Error,
