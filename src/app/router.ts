@@ -3,6 +3,7 @@ import Notes from '@/pages/notes.vue'
 import Project from '@/pages/project.vue'
 import Resume from '@/pages/resume.vue'
 import Posts from '@/pages/posts.vue'
+import Sponsors from '../../posts/sponsors.md'
 import { camlize } from '@/utils/strings'
 import { NOT_FOUND } from '@/constants/http-state'
 import { DefineComponent } from 'vue'
@@ -38,6 +39,7 @@ export enum RouteName {
   Notes = 'notes',
   Project = 'project',
   Resume = 'resume',
+  Sponsors = 'sponsors',
   Error = 'error'
 }
 
@@ -58,9 +60,14 @@ const routes: RouteRecordRaw[] = [
     component: Resume
   },
   {
+    path: '/sponsors',
+    name: RouteName.Sponsors,
+    component: Sponsors
+  },
+  {
     path: '/notes',
-    component: Posts
-    // children: [...notes]
+    component: Posts,
+    children: [...notes]
   },
   {
     name: RouteName.Error,

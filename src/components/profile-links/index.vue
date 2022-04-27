@@ -24,6 +24,10 @@ export default defineComponent({
       {
         route: 'resume',
         tip: 'Resume'
+      },
+      {
+        route: 'sponsors',
+        tip: 'Sponsors'
       }
     ]
     const actived = ref('note')
