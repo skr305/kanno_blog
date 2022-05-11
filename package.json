@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/XeryYue/kanno_blog.git"
+    "url": "git+https://github.com/nonzzz/kanno_blog.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/XeryYue/kanno_blog/issues"
+    "url": "https://github.com/nonzzz/kanno_blog/issues"
   },
-  "homepage": "https://github.com/XeryYue/kanno_blog#readme",
+  "homepage": "https://github.com/nonzzz/kanno_blog#readme",
   "devDependencies": {
     "@koa/router": "^10.1.1",
     "@types/js-cookie": "^3.0.2",

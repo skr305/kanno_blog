@@ -10,7 +10,7 @@ const CONFIG = {
   introduce: 'Gopher & font-end developer',
   language: 'en-us',
   email: 'mailto:812137533@qq.com',
-  github: 'https://github.com/XeryYue',
+  github: 'https://github.com/nonzzz',
   domain: 'blog.miaya.art'
 }
 
